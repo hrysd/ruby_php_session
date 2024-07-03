@@ -180,7 +180,7 @@ class PHPSession
           value_include_quotes = decoder.buffer.byteslice(0, length_include_quotes)
           value = value_include_quotes.gsub(/\A"/,'').gsub(/";\Z/, '')
 
-          value = value.encode(decoder.encoding, decoder.encoding_option) if decoder.encoding
+          value = value.encode(decoder.encoding, **decoder.encoding_option) if decoder.encoding
           decoder.buffer = decoder.buffer.byteslice(length_include_quotes .. -1)
 
           decoder.process_value(value)

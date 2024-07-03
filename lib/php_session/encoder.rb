@@ -57,7 +57,7 @@ class PHPSession
       def serialize(value)
         value = value.to_s
         # encode here for valid bytesize
-        s = value.encode(@encoder.encoding, @encoder.encoding_option)
+        s = value.encode(@encoder.encoding, **@encoder.encoding_option)
         %|s:#{s.bytesize}:"#{s}";|
       end
     end

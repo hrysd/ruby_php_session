@@ -39,7 +39,7 @@ describe PHPSession do
         }
         session = PHPSession.new(option)
         data = session.load(@session_file[:session_id])
-        expect(data).to eq({"key" => "テスト🍺".encode("EUC-JP", {:undef => :replace})})
+        expect(data).to eq({"key" => "テスト🍺".encode("EUC-JP", undef: :replace)})
       end
 
       after do
@@ -108,7 +108,7 @@ describe PHPSession do
       it "should delete session file" do
         session = PHPSession.new(:session_file_dir => @session_file[:dir_name])
         session.destroy(@session_file[:session_id])
-        expect(File.exists?(@session_file[:file_path])).to eq(false)
+        expect(File.exist?(@session_file[:file_path])).to eq(false)
       end
     end
   end

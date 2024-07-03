@@ -34,7 +34,7 @@ class PHPSession
       end
 
       def exists?(session_id)
-        ::File.exists?(file_path(session_id))
+        ::File.exist?(file_path(session_id))
       end
 
       private
